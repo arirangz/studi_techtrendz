@@ -1,11 +1,7 @@
 <?php
-    $mainMenu = [
-        ["page" => "index.php", "title" => "Accueil", "head_title" => "Accueil TechTrendz", "meta_description" => "TechTrendz, l'actu tech !"],
-        ["page" => "actualites.php", "title" => "Actualités", "meta_description" => "Découvrez toutes nos actualités."],
-        ["page" => "a_propos.php", "title" => "A propos", "meta_description" => "L'histoire du site TechTrendz"],
-    ];
-?>
+    $currentPage = basename($_SERVER["SCRIPT_NAME"]);
 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <title>TechTrendz</title>
+    <meta name="description" content="<?=$mainMenu[$currentPage]["meta_description"] ?>">
+    <title><?=$mainMenu[$currentPage]["head_title"] ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/override-bootstrap.css">
@@ -29,10 +25,18 @@
                 </a>
             </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <?php foreach ($mainMenu as $key => $menuItem) { ?>
-                    <li><a href="<?=$menuItem["page"]; ?>" class="nav-link px-2"><?=$menuItem["title"]; ?></a></li>
-                <?php } ?>
+            <ul class="nav nav-pills col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <?php foreach ($mainMenu as $key => $menuItem) { 
+                    if (!$menuItem["exclude"]) {
+                    ?>
+                    <li class="nav-item"><a href="<?=$key; ?>" class="nav-link px-2 <?php 
+                        if ($key === $currentPage) { echo "active"; }
+                        //echo ($key === $currentPage) ? "active" : "";
+                        
+                        ?>"><?=$menuItem["menu_title"]; ?></a></li>
+                <?php } 
+                    }
+                ?>
             </ul>
 
             <div class="col-md-3 text-end">
