@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+}
+
+input[type='text'],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type='submit'] {
+  background-color: #04aa6d;
+  color: white;
+  margin: 5px;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type='submit']:hover {
+  background-color: #12d01c;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.content-form {
+  display: block;
+  width: 45%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #0d6efdc2;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-connexion {
+  display: block;
+  border-radius: 10px;
+  background-color: #f8f9fac2;
+}
+
+.content-btn-submit {
+  display: block;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.col-75-R {
+  float: right;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns  
+.row::after {
+  content: '';
+  display: table;
+  clear: both;
+} 
+*/
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 576px) {
+  .content-form,
+  .col-25,
+  .col-75,
+  .col-75-R,
+  input[type='submit'] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/* TO DO : à ajuster */
+.card-container[_ngcontent-ng-c105734841]
+  .card[_ngcontent-ng-c105734841]:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card-container[_ngcontent-ng-c105734841]
+  .card[_ngcontent-ng-c105734841]:not(:last-child) {
+  margin-right: 0;
+}
+
+.card.card-small[_ngcontent-ng-c105734841] {
+  height: 16px;
+  width: 168px;
+}
+
+.card[_ngcontent-ng-c105734841] {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 40px;
+  width: 200px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}

@@ -1,9 +1,5 @@
 <?php
-    if ($article["image"] === null) {
-        $imagePath = _ASSETS_IMAGES_FOLDER_."default-article.jpg";
-    } else {
-        $imagePath = _ARTICLES_IMAGES_FOLDER_.htmlentities($article["image"]);
-    }
+    $imagePath = getArticleImage($article["image"]);
 ?>
 
 <div class="col-md-4 my-2">

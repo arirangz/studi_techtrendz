@@ -1,8 +1,30 @@
 <?php 
 
+require_once __DIR__."/lib/config.php";
+require_once __DIR__."/lib/pdo.php";
 require_once __DIR__ . "/lib/article.php"; 
-$id = $_GET["id"];
-$article = $articles[$id];
+
+require_once __DIR__."/lib/menu.php";
+
+$mainMenu["actualite.php"] = ["head_title" => "Article introuvable...", "meta_description" => "Article introuvable...", "exclude" => true];
+
+$error = false;
+
+if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+
+    $id = $_GET["id"];
+    $article = getArticleById($pdo, $id);
+
+    if (!$article) {
+        $imagePath = getArticleImage($article["image"]);
+        $mainMenu["actualite.php"] = ["head_title" => htmlentities($article["title"]), "meta_description" => htmlentities(substr($article["content"], 0, 250)), "exclude" => true];
+    } else {
+        $error = true;
+    }
+} else {
+    $error = true;
+}
+
 
 
 require_once __DIR__ . "/lib/menu.php"; 
@@ -14,6 +36,8 @@ require_once __DIR__ . "/templates/header.php";
 
 ?>
 
+<?php if ($error) { ?>
+   
 
 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-10 col-sm-8 col-lg-6">
@@ -24,6 +48,11 @@ require_once __DIR__ . "/templates/header.php";
         <p class="lead"><?=htmlentities($article["content"]) ?></p>
     </div>
 </div>
+<?php } else { ?>
+    <div class="alert alert-danger" role="alert">
+        <h1>Article introuvable...</h1>
+    </div>
+<?php } ?>
 
 
 
