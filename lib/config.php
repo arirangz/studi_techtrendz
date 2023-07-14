@@ -1,5 +1,6 @@
 <?php
 
+define("_DOMAIN_", "localhost");
 define("_DB_SERVER_", "localhost");
 define("_DB_NAME_", "studi_techtrendz_live");
 define("_DB_USER_", "root");

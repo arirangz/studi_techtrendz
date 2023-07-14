@@ -13,8 +13,7 @@
     <title><?=$mainMenu[$currentPage]["head_title"] ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/override-bootstrap.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/override-bootstrap.css">
 </head>
 
 <body>
@@ -42,6 +41,7 @@
 
             <div class="col-md-3 text-end">
                 <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
+                <button type="button" class="btn btn-primary">Sign-up</button>
             </div>
         </header>
 
