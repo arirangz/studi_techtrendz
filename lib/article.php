@@ -1,16 +1,42 @@
 <?php
 
-function getArticles(PDO $pdo, int $limit = null ):array
+/*
+
+Page 1:
+LIMIT 0, 10
+Page 2:
+LIMIT 10, 10
+Page 3:
+LIMIT 20, 10
+Page 4:
+LIMIT 30, 10
+
+param : page et limit
+offest = (page - 1) * limit
+Page 3
+30     = (3 -1) * 10
+
+*/
+
+
+function getArticles(PDO $pdo, int $limit = null, int $page = null ):array
 {
     $sql = "SELECT * FROM articles ORDER BY id DESC";
-    if ($limit) {
+    if ($limit && !$page) {
         $sql .= " LIMIT :limit";
+    }
+    if ($page) {
+        $sql .= " LIMIT :offset, :limit";
     }
 
     $query = $pdo->prepare($sql);
 
     if ($limit) {
         $query->bindValue(":limit", $limit, PDO::PARAM_INT);
+    }
+    if ($page) {
+        $offset = ($page -1) * $limit;
+        $query->bindValue(":offset", $offset, PDO::PARAM_INT);
     }
 
     $query->execute();
