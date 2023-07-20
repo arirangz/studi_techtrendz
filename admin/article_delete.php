@@ -12,7 +12,7 @@ $article = false;
 $errors = [];
 $messages = [];
 if (isset($_GET["id"])) {
-    $article =  getArticleById($pdo, $_GET["id"]);
+    $article =  getArticleById($pdo, (int)$_GET["id"]);
 }
 if ($article) {
     if (deleteArticle($pdo, $_GET["id"])) {
