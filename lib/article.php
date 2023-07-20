@@ -46,6 +46,20 @@ function getArticles(PDO $pdo, int $limit = null, int $page = null ):array
 }
 
 
+function getTotalArticle(PDO $pdo):int
+{
+    $sql = "SELECT COUNT(*) as total FROM articles;";
+
+    $query = $pdo->prepare($sql);
+
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+
+
 function getArticleById(PDO $pdo, int $id):array|bool
 {
     $sql = "SELECT * FROM articles WHERE id = :id";
